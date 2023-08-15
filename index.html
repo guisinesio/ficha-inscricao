@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FICHA DE INSCRIÇÃO</title>
+</head>
+<body>
+    <form>
+        <!--Primeira página da ficha -->
+        <p>Informações de contato</p>
+        <div>
+            <label for="Nome">Nome completo</label><br>
+            <input type="text" name="Nome" id="Nome" minlength="10" required>
+        </div>
+
+        <div>
+            <label>CPF</label><br>
+            <input type="number" name="CPF" id="CPF" required>
+        </div>
+        <div>
+            <label>Email</label><br>
+            <input type="text" name="email" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
+        </div>
+
+        <div>
+            <label>Celular</label><br>
+            <input type="number" name="Celular" id="Celular" required>
+        </div>
+        <div>
+            <label>Telefone</label><br>
+            <input type="number" name="Telefone" id="Telefone">
+        </div>
+        <button type="button" onclick="nextPage('page1', 'page2')">Avançar</button>
+
+        <!--Segunda página da ficha-->
+        <p>Informações do curso</p>
+        <div>
+            <label for="Unidade">Unidade</label><br>
+            <select id="cidadeSelect">
+                <option value="0">Selecione</option>
+                <option value="fortaleza">Fortaleza</option>
+                <option value="maracanau">Maracanaú</option>
+                <option value="baturite">Baturité</option>
+                <option value="barra">Barra do Ceará</option>
+                <!-- Adicione mais estados aqui -->
+            </select>
+        </div>
+
+        <div>
+            <input type="text" id="enderecoInput" placeholder="Endereço" size="55">
+        </div>
+        <script>
+            var enderecoUnidade = {
+                fortaleza: "Rua da Universidade, Nº 305, 60895-000, Fortaleza-CE, Brasil",
+                maracanau: "Av. do Maraca, Nº 100, 60895-100, Maracanaú-CE, Brasil",
+                baturite: "Serra dos Baterá, Nº 2A, 60000-000, Baturité-CE, Brasil",
+                barra: "Chico Sá, Nº 69, 60895-500, Fortaleza-CE, Brasil",
+            };  
+            
+            var cidadeSelect = document.getElementById("cidadeSelect");
+            var enderecoInput = document.getElementById("enderecoInput");
+    
+            cidadeSelect.addEventListener("change", function() {
+                var cidadeSelecionada = cidadeSelect.value;
+    
+                if (cidadeSelecionada !== "0") {
+                    enderecoInput.value = enderecoUnidade[cidadeSelecionada];
+                } else {
+                    enderecoInput.value = "";
+                }
+            });
+        </script>
+        <!--Iniciando código dos cursos-->
+            <label for="Cursus">Cusros</label>
+            <div>
+                <select name="cursos" id="cursoSelect">
+                    <option value="0">Selecione</option>
+                    <option value="administracao">ADMINISTRAÇÃO</option>
+                    <option value="enfermagem">ENFERMAGEM</option>
+                    <option value="contabeis">CIÊNCIAS CONTÁBEIS</option>
+                    <option value="direito">DIREITO</option>
+                    <!-- Adicione mais estados aqui -->
+                </select>
+            </div>
+
+            <div>
+                <input type="text" name="turno" id="cursoInput" placeholder="Turno" size="30">
+            </div>
+
+            <script>
+                var curso = {
+                    administracao: "NOITE N2 19h:40 às 20h:30",
+                    enfermagem: "NOITE N1 18h:30 às 19h:20",
+                    contabeis: "NOITE N3 20h:50 às 21h:40",
+                    direito: "NOITE FULL 19h:00 às 21h:50",
+                };
+
+                var cursoSelect = document.getElementById("cursoSelect")
+                var cursoInput = document.getElementById("cursoInput")
+
+                cursoSelect.addEventListener("change", function() {
+                var cursoSelecionado = cursoSelect.value;
+    
+                if (cursoSelecionado !== "0") {
+                    cursoInput.value = curso[cursoSelecionado];
+                } else {
+                    cursoInput.value = "";
+                }
+            });
+            </script>
+    </form> 
+</body>
+</html>
