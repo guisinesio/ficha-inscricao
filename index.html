@@ -3,112 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="Js/scriptblock.js"></script>
     <title>FICHA DE INSCRIÇÃO</title>
 </head>
 <body>
     <form>
         <!--Primeira página da ficha -->
-        <p>Informações de contato</p>
-        <div>
-            <label for="Nome">Nome completo</label><br>
-            <input type="text" name="Nome" id="Nome" minlength="10" required>
-        </div>
-
-        <div>
-            <label>CPF</label><br>
-            <input type="number" name="CPF" id="CPF" required>
-        </div>
-        <div>
-            <label>Email</label><br>
-            <input type="text" name="email" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
-        </div>
-
-        <div>
-            <label>Celular</label><br>
-            <input type="number" name="Celular" id="Celular" required>
-        </div>
-        <div>
-            <label>Telefone</label><br>
-            <input type="number" name="Telefone" id="Telefone">
-        </div>
-        <button type="button" onclick="nextPage('page1', 'page2')">Avançar</button>
+        <div class="form-page active" id="page1">
+            <div>
+                <p>Informações de contato</p>
+                <label for="Nome">Nome completo</label><br>
+                <input type="text" name="Nome" id="Nome" minlength="10" required size="30">
+            </div>
+            <div>
+                <label>CPF</label><br>
+                <input type="number" name="cpf" id="idCpf" required >
+            </div>
+            <div>
+                <label>Email</label><br>
+                <input type="text" name="email" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required size="30">
+            </div>
+            <div>
+                <label>Celular</label><br>
+                <input type="number" name="Celular" id="Celular" required>
+            </div>
+            <div>
+                <label>Telefone</label><br>
+                <input type="number" name="Telefone" id="Telefone">
+            </div>
+            <button type="button" onclick="nextPage('page1', 'page2')">Avançar</button>
+        </div>   
 
         <!--Segunda página da ficha-->
-        <p>Informações do curso</p>
-        <div>
-            <label for="Unidade">Unidade</label><br>
-            <select id="cidadeSelect">
-                <option value="0">Selecione</option>
-                <option value="fortaleza">Fortaleza</option>
-                <option value="maracanau">Maracanaú</option>
-                <option value="baturite">Baturité</option>
-                <option value="barra">Barra do Ceará</option>
-                <!-- Adicione mais estados aqui -->
-            </select>
-        </div>
-
-        <div>
-            <input type="text" id="enderecoInput" placeholder="Endereço" size="55">
-        </div>
-        <script>
-            var enderecoUnidade = {
-                fortaleza: "Rua da Universidade, Nº 305, 60895-000, Fortaleza-CE, Brasil",
-                maracanau: "Av. do Maraca, Nº 100, 60895-100, Maracanaú-CE, Brasil",
-                baturite: "Serra dos Baterá, Nº 2A, 60000-000, Baturité-CE, Brasil",
-                barra: "Chico Sá, Nº 69, 60895-500, Fortaleza-CE, Brasil",
-            };  
-            
-            var cidadeSelect = document.getElementById("cidadeSelect");
-            var enderecoInput = document.getElementById("enderecoInput");
-    
-            cidadeSelect.addEventListener("change", function() {
-                var cidadeSelecionada = cidadeSelect.value;
-    
-                if (cidadeSelecionada !== "0") {
-                    enderecoInput.value = enderecoUnidade[cidadeSelecionada];
-                } else {
-                    enderecoInput.value = "";
-                }
-            });
-        </script>
-        <!--Iniciando código dos cursos-->
-            <label for="Cursus">Cusros</label>
+        <div class="form-page" id="page2">
             <div>
-                <select name="cursos" id="cursoSelect">
-                    <option value="0">Selecione</option>
-                    <option value="administracao">ADMINISTRAÇÃO</option>
-                    <option value="enfermagem">ENFERMAGEM</option>
-                    <option value="contabeis">CIÊNCIAS CONTÁBEIS</option>
-                    <option value="direito">DIREITO</option>
+                <p>Informações do curso</p>
+                <label for="Unidade">Unidade</label><br>
+                <select id="cidadeSelect">
+                    <option selected disabled value="">Selecione</option>
+                    <option value="fortaleza">Fortaleza</option>
+                    <option value="maracanau">Maracanaú</option>
+                    <option value="baturite">Baturité</option>
+                    <option value="barra">Barra do Ceará</option>
                     <!-- Adicione mais estados aqui -->
                 </select>
             </div>
 
             <div>
-                <input type="text" name="turno" id="cursoInput" placeholder="Turno" size="30">
+                <input type="text" id="enderecoInput" placeholder="Endereço" size="55">
             </div>
-
             <script>
-                var curso = {
-                    administracao: "NOITE N2 19h:40 às 20h:30",
-                    enfermagem: "NOITE N1 18h:30 às 19h:20",
-                    contabeis: "NOITE N3 20h:50 às 21h:40",
-                    direito: "NOITE FULL 19h:00 às 21h:50",
-                };
-
-                var cursoSelect = document.getElementById("cursoSelect")
-                var cursoInput = document.getElementById("cursoInput")
-
-                cursoSelect.addEventListener("change", function() {
-                var cursoSelecionado = cursoSelect.value;
+                var enderecoUnidade = {
+                    fortaleza: "Rua da Universidade, Nº 305, 60895-000, Fortaleza-CE, Brasil",
+                    maracanau: "Av. do Maraca, Nº 100, 60895-100, Maracanaú-CE, Brasil",
+                    baturite: "Serra dos Baterá, Nº 2A, 60000-000, Baturité-CE, Brasil",
+                    barra: "Chico Sá, Nº 69, 60895-500, Fortaleza-CE, Brasil",
+                };  
+            
+                var cidadeSelect = document.getElementById("cidadeSelect");
+                var enderecoInput = document.getElementById("enderecoInput");
     
-                if (cursoSelecionado !== "0") {
-                    cursoInput.value = curso[cursoSelecionado];
-                } else {
-                    cursoInput.value = "";
-                }
-            });
+                cidadeSelect.addEventListener("change", function() {
+                    var cidadeSelecionada = cidadeSelect.value;
+    
+                    if (cidadeSelecionada !== "0") {
+                    enderecoInput.value = enderecoUnidade[cidadeSelecionada];
+                    } else {
+                    enderecoInput.value = "";
+                    }
+                });
             </script>
+            <!--Iniciando código dos cursos-->
+                <div>
+                    <label for="Cursus">Cusros</label><br>
+                    <select name="cursos" id="cursoSelect">
+                        <option selected disabled value="">Selecione</option>
+                        <option value="administracao">ADMINISTRAÇÃO</option>
+                        <option value="enfermagem">ENFERMAGEM</option>
+                        <option value="contabeis">CIÊNCIAS CONTÁBEIS</option>
+                        <option value="direito">DIREITO</option>
+                        <!-- Adicione mais estados aqui -->
+                    </select>
+                </div>
+                <div>
+                    <input type="text" name="turno" id="cursoInput" placeholder="Turno" size="30">
+                </div>
+                <!--script para o preenchimento dos horários-->
+                <script>
+                    var curso = {
+                        administracao: "NOITE N2 19h:40 às 20h:30",
+                        enfermagem: "NOITE N1 18h:30 às 19h:20",
+                        contabeis: "NOITE N3 20h:50 às 21h:40",
+                        direito: "NOITE FULL 19h:00 às 21h:50",
+                    };
+
+                    var cursoSelect = document.getElementById("cursoSelect")
+                    var cursoInput = document.getElementById("cursoInput")
+
+                    cursoSelect.addEventListener("change", function() {
+                    var cursoSelecionado = cursoSelect.value;
+    
+                    if (cursoSelecionado !== "0") {
+                        cursoInput.value = curso[cursoSelecionado];
+                    } else {
+                            cursoInput.value = "";
+                }
+                });
+                </script>
+                <button onclick="previousPage('page2', 'page1')">Voltar</button>
+                <button onclick="nextPage('page2', 'page3')">Avançar</button>
+        </div>
+            <!--Terceira página da ficha-->
+        <div class="form-page" id="page3">
+            <div>
+                <p>Informações de Endereço</p>
+                <label for="cep">CEP</label><br>
+                <input type="text" name="CEP" id="idCep">
+            </div>
+            <div>
+                <label for="logradouto">Logradouro</label><br>
+                <input type="text" name="Logradouro" id="idLogradouro">
+            </div>
+            <div>
+                <label for="n">Número</label><br>
+                <input type="text" name="Numero" id="idNumero">
+            </div>
+            <div>
+                <label for="complemento">Complemento</label><br>
+                <input type="text" name="complemento" id="idComplemento">
+            </div>
+            <div>
+                <label for="bairro">Bairro</label><br>
+                <input type="text" name="bairro" id="idBairro">
+            </div>
+            <div>
+                <label for="estado">Estado</label><br>
+                <input type="text" name="uf" id="uf" maxlength="2">
+            </div>
+            <div>
+                <label for="cidade">Cidade</label><br>
+                <input type="text" name="city" id="idCity">
+            </div>
+            <button onclick="previousPage('page3', 'page2')">Voltar</button>
+            <button onclick="nextPage('page3', 'page4')">Avançar</button>
+        </div> 
+        <!--Quarta página da ficha--> 
+        <div class="form-page" id="page4">  
+            <div>
+                <p>Informações de Indentificação</p>
+                <label for="documento">Tipo de documento</label><br>
+                <select name="documento" id="idDocumento">
+                    <option selected disabled value="">Selecione</option>
+                    <option value="#">Carteira de Identidade - RG</option>
+                    <option value="#">Carteira de Identidade Militar</option>
+                    <option value="#">Carteira de Identidade Profissional</option>
+                    <option value="#">Carteira Nacional de Habilitação</option>
+                    <!--Adicione mais categorias aqui-->
+                </select>
+            </div>
+            <div>
+                <label for="nDocumento">Nº do Documento</label><br>
+                <input type="text" name="idNumeroDocumento">
+            </div>
+            <div>
+                <label for="uf">Estado</label><br>
+                <input type="text" name="idUfEstado">
+            </div>
+            <div>
+                <label for="dataNasc">Data de Nascimento</label><br>
+                <input type="date" name="dataNasc">
+            </div>
+            <div>
+                <label for="sexo">Sexo</label><br>
+                <select name="sexo" id="idSelectSexo">
+                    <option selected disabled value="">Selecione</option>
+                    <option value="#">Masculino</option>
+                    <option value="#">Feminino</option>
+                </select>
+            </div>
+            <div>
+                <label for="ufNascimento">Estado de Nacimento</label><br>
+                <select name="ufNascimento" id="idUfNascimento">
+                    <option value="#">Selecione</option>
+                </select>
+            </div>
+            <div>
+                <label for="cidadeNasc">Cidade de Nascimento</label><br>
+                <select name="cidadeNasc" id="idCityNasc">
+                    <option value="#">Selecione</option>
+                </select>
+            </div>
+            <div>
+                <label for="nomeMae">Nome da Mãe</label><br>
+                <input type="text" name="idNomeMae">
+            </div>
+            <div>
+                <label for="nomePai">Nome do Pai</label><br>
+                <input type="text" name="idNomePai">
+            </div>
+            <button onclick="previousPage('page4', 'page3')">Voltar</button>
+            <button onclick="nextPage('page4', 'page5')">Avançar</button>
+        </div>
+        <!--Quinta Página da ficha--> 
+        <div class="form-page" id="page5">
+            <div>
+                <p>Informações de Vestibular</p>
+                <label for="ingresso">Tipo de Ingresso</label><br>
+                <select name="ingresso" id="idIngresso">
+                    <option selected disabled value="">Selecione</option>
+                    <option value="#">Usar nota do Enem</option>
+                    <option value="#">Fazer prova de vestibular</option>
+                </select>
+            </div>
+            <div>
+                <label for="anoFormacao">Ano de Formação</label><br>
+                <input type="number" name="idConclusao">
+            </div>
+            <div>
+                <label for="instituicao">Instituição de Formação</label><br>
+                <select name="instituicao" id="idinstituicao">
+                    <option selected disabled value="">Selecione</option>
+                    <option value="#">Escola Pública</option>
+                    <option value="#">Escola Privada</option>
+                </select>
+            </div>
+            <div>
+                <label for="instituicao">Local da Prova</label><br>
+                <select name="instituicao" id="idinstituicao">
+                    <option value="">Selecione</option>
+                </select>
+            </div>
+            <div>
+                <label for="dataProva">Data da Prova</label><br>
+                <input type="date" name="dataprova">
+            </div>
+            <div>
+                <label for="horario">Horário</label><br>
+                <input type="text" name="horario" id="idHorario">
+            </div>
+            <div>
+                <label for="pcd">Necessidade Especial</label><br>
+                <select name="necessidade" id="idPcd">
+                    <option selected disabled value="">Selecione</option>
+                    <option value="#">Nenhuma</option>
+                    <option value="#">Auditiva</option>
+                    <option value="#">Física</option>
+                    <option value="#">Visual</option>
+                    <option value="#">Outras necessidades</option>
+                </select>
+            </div>
+            <button onclick="previousPage('page5', 'page4')">Voltar</button>
+            <button type="submit">Avançar</button> <!--ainda preciso criar a função para concluir a inscrição-->
+        </div> 
     </form> 
 </body>
 </html>
